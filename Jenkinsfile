@@ -12,7 +12,7 @@ stage('Build-and-Tag')
 {
     /* This builds the actual image; 
          * This is synonymous to docker build on the command line */
-    app=docker.build('amalan06/car_docker_repo')
+    app = docker.build('amalan06/car_docker_repo')
 }
 
 stage('Post-to-dockerhub')
