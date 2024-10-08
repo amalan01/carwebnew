@@ -24,31 +24,12 @@ stage('Post-to-dockerhub')
     }
 }
 
-stage('Deploy') {
-    steps {
-        script {
-            // Check if docker-compose is installed
-            def composeExists = sh(script: 'command -v docker-compose', returnStatus: true) == 0
-
-            // Install docker-compose if it doesn't exist
-            if (!composeExists) {
-                echo "docker-compose not found. Installing..."
-                sh """
-                   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                   sudo chmod +x /usr/local/bin/docker-compose
-                   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-                """
-                echo "docker-compose installed successfully."
-            } else {
-                echo "docker-compose already installed."
-            }
-
-            // Proceed with the deployment
-            sh "docker-compose down"
-            sh "docker-compose up -d"
-        }
-    }
+stage('Deploy')
+{
+    sh "docker-compose down"
+    sh "docker-compose up -d"
+}
 }
 
 
-}
+
