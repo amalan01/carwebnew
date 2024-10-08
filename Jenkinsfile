@@ -18,6 +18,10 @@ stage('Build-and-Tag')
 stage('Post-to-dockerhub')
 {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials')
+    {
+        // Push the built image to Docker Hub
+            app.push('latest')  // You can specify a tag here if needed
+    }
 }
 
 stage('Deploy')
