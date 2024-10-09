@@ -1,4 +1,4 @@
-node('test-app-server-02')
+node('ubuntu-Appserver-3120')
 {
 
 def app
@@ -18,18 +18,12 @@ stage('Build-and-Tag')
 stage('Post-to-dockerhub')
 {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials')
-    {
-        // Push the built image to Docker Hub
-            app.push('latest')  // You can specify a tag here if needed
-    }
 }
 
 stage('Deploy')
 {
-    sh "docker-compose down"
+    sh "docker-compose down"l
     sh "docker-compose up -d"
 }
+
 }
-
-
-
