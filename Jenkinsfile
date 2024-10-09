@@ -25,7 +25,7 @@ stage('Post-to-dockerhub')
 
 stage('Deploy')
 {
-    sh "docker-compose down"l
+    sh "docker-compose down"
     sh "docker-compose up -d"
 }
 
