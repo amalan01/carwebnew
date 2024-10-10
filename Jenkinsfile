@@ -1,4 +1,4 @@
-node('ubuntu-Appserver-3120')
+node('ubuntu-Appserver-2140')
 {
 
 def app
