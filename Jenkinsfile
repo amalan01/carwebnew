@@ -19,7 +19,7 @@ stage('Post-to-dockerhub')
 {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials')
     {
-        docker.push('latest')
+        app.push('latest')
     }
    
 }
